@@ -142,41 +142,90 @@ function closeCart() {
   document.getElementById("cartModal").style.display = "none";
 }
 
-function placeOrder() {
-  const userEmail = document.getElementById("userEmail").value;
-  const payment = document.getElementById("payment").value;
+ function placeOrder() {
+     const userEmail = document.getElementById("userEmail").value;
+     const paymentMethod = document.getElementById("payment").value;
+     const orderDetails = cart.map(item => `${item.name} × ${item.qty}`).join(", ");
+     const now = new Date();
+     const formattedTime = now.toLocaleString();
 
-  if (!userEmail) {
-    alert("Please enter your email.");
-    return;
-  }
+     if (!userEmail || !orderDetails) {
+      alert("Please enter your email and ensure cart is not empty.");
+      return;
+    }
 
-  if (cart.length === 0) {
-    alert("Your cart is empty.");
-    return;
-  }
+    
+     console.log("Sending to email:", userEmail); 
 
-  const orderSummary = cart.map(item => `${item.qty} x ${item.name}`).join(", ");
-  const templateParams = {
-    email: userEmail,
-    message: `Order placed with ${orderSummary} | Payment Mode: ${payment}`
-  };
+     emailjs.send("service_f0c03mk", "template_pgbycrt",{
+      name: "Customer",
+      email: userEmail,
+      title: paymentMethod,
+      message: orderDetails,
+      time: formattedTime
+    })
+     .then(() => {
+      alert("🎉 Thank you! Your order has been placed.");
+      cart.length = 0;
+      closeCart();
+    })
+     .catch((error) => {
+      console.error("EmailJS Error:", error);
+      alert("❌ Failed to send email. Please try again.");
+    });
+  }
+  function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
 
-  emailjs.send("service_4sjgu6n", "template_vt2kw3i", templateParams)
-    .then(function(response) {
-      alert("🎉 Order placed successfully!");
-      cart.length = 0;
-      closeCart();
-    }, function(error) {
-      alert("❌ Failed to place order. Please try again.");
-      console.error("EmailJS error:", error);
-    });
+let userData = {};
+
+function submitSignup() {
+  const name = document.getElementById("signupName").value;
+  const email = document.getElementById("signupEmail").value;
+  const mobile = document.getElementById("signupMobile").value;
+  const address = document.getElementById("signupAddress").value;
+  const dob = document.getElementById("signupDOB").value;
+
+  if (!name || !email || !mobile || !address || !dob) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  userData = { name, email, mobile, address, dob };
+  alert("✅ Sign-up successful!");
+  closeModal("signupModal");
+}
+
+function submitLogin() {
+  const mobile = document.getElementById("loginMobile").value;
+  const otp = document.getElementById("loginOTP").value;
+
+  if (userData.mobile === mobile && otp === "1234") {
+    alert("✅ Logged in successfully!");
+    closeModal("loginModal");
+  } else {
+    alert("❌ Incorrect mobile or OTP. Hint: OTP is '1234'");
+  }
 }
 
 function showProfile() {
-  alert("Profile feature coming soon!");
+  if (!userData.name) {
+    alert("Please sign up first.");
+    return;
+  }
+  const profileText = `
+    Name: ${userData.name}<br>
+    Email: ${userData.email}<br>
+    Mobile: ${userData.mobile}<br>
+    Address: ${userData.address}<br>
+    DOB: ${userData.dob}
+  `;
+  document.getElementById("profileData").innerHTML = profileText;
+  openModal("profileModal");
 }
 
-function openModal(id) {
-  alert("Signup modal - coming soon!");
-}
+

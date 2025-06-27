@@ -86,32 +86,62 @@
 </div>
 
 <footer id="footerLocation">
-  <p><strong>Farm Location:</strong> TKS Organic Farm – find us here:</p>
-  <iframe src="https://www.google.com/maps/embed?pb=...your_map_url..." allowfullscreen="" loading="lazy"></iframe>
+  <p><strong>Farm Location:</strong> TKS Organic Farm – find us here:</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31200.168151227876!2d77.67834995!3d13.12178005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c15bc7e2fb%3A0x71147347b75057b5!2sTKS%20Organic%20Farms!5e0!3m2!1sen!2sin!4v1719397729199!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </footer>
 
+
 <div id="cartModal">
-  <div class="modal-content">
-    <h2>Your Cart</h2>
-    <ul id="cartItems"></ul>
-    <label for="payment">Select Payment Method:</label>
-    <select id="payment">
-      <option value="cod">Cash on Delivery</option>
-      <option value="upi">UPI</option>
-      <option value="card">Card</option>
-    </select>
-    <input type="email" id="userEmail" placeholder="Enter your email" />
-    <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
-    <button class="close-btn" onclick="closeCart()">Close</button>
-  </div>
+  <div class="modal-content">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <label for="payment">Select Payment Method:</label>
+    <select id="payment" style="margin-top:10px;padding:6px;border-radius:6px;">
+      <option value="cod">Cash on Delivery</option>
+      <option value="upi">UPI</option>
+      <option value="card">Card</option>
+    </select>
+    <input type="email" id="userEmail" placeholder="Enter your email" style="margin-top:10px;width:100%;padding:8px;border-radius:6px;border:1px solid #ccc;"/>
+    <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+    <button class="close-btn" onclick="closeCart()">Close</button>
+  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript"
+ src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
   (function() {
     emailjs.init({ publicKey: "cM-1D1912Dc8cl3bn" });
   })();
 </script>
+</script>
+<!-- SIGNUP Modal -->
+<div id="signupModal" class="modal-content" style="display:none;position:fixed;top:10%;left:50%;transform:translateX(-50%);z-index:1000;background:white;padding:20px;border-radius:10px;">
+  <h2>Sign Up</h2>
+  <input type="text" id="signupName" placeholder="Name" style="width:100%;margin-bottom:10px;" />
+  <input type="email" id="signupEmail" placeholder="Email" style="width:100%;margin-bottom:10px;" />
+  <input type="text" id="signupMobile" placeholder="Mobile" style="width:100%;margin-bottom:10px;" />
+  <input type="text" id="signupAddress" placeholder="Address" style="width:100%;margin-bottom:10px;" />
+  <input type="date" id="signupDOB" style="width:100%;margin-bottom:10px;" />
+  <button onclick="submitSignup()">Submit</button>
+  <button onclick="closeModal('signupModal')">Close</button>
+</div>
+
+<!-- LOGIN Modal -->
+<div id="loginModal" class="modal-content" style="display:none;position:fixed;top:10%;left:50%;transform:translateX(-50%);z-index:1000;background:white;padding:20px;border-radius:10px;">
+  <h2>Login</h2>
+  <input type="text" id="loginMobile" placeholder="Mobile Number" style="width:100%;margin-bottom:10px;" />
+  <input type="text" id="loginOTP" placeholder="Enter OTP" style="width:100%;margin-bottom:10px;" />
+  <button onclick="submitLogin()">Login</button>
+  <button onclick="closeModal('loginModal')">Close</button>
+</div>
+
+<!-- PROFILE Modal -->
+<div id="profileModal" class="modal-content" style="display:none;position:fixed;top:10%;left:50%;transform:translateX(-50%);z-index:1000;background:white;padding:20px;border-radius:10px;">
+  <h2>Your Profile</h2>
+  <p id="profileData">No data yet</p>
+  <button onclick="closeModal('profileModal')">Close</button>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
