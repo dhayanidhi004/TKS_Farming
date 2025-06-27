@@ -1,0 +1,364 @@
+:root {
+  --body-text-color: #e0e7ff;
+  --heading-color: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --border-radius: 0.75rem;
+  --max-width: 1200px;
+  --page-bg-color: #0f172a;
+  --overlay-color: rgba(15, 23, 42, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url('https://png.pngtree.com/thumb_back/fh260/background/20240725/pngtree-the-concept-of-new-farming-or-smart-farming-agricultural-technology-image_15917909.jpg') center/cover no-repeat;
+  color: var(--body-text-color);
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-color);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.top-buttons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.top-buttons button {
+  background-color: #22c55e;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.welcome-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-content h1 {
+  font-size: 64px;
+  margin: 0;
+  text-shadow: 0 3px 8px black;
+}
+
+.hero-button {
+  margin-top: 20px;
+  padding: 14px 28px;
+  font-size: 18px;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #16a34a;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: none;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-section {
+  text-align: center;
+}
+
+.header-section h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 0px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+.header-section p {
+  color: #f87171;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.overview-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 12px var(--card-shadow);
+  border-radius: var(--border-radius);
+  padding: 32px 40px;
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overview-header h1 {
+  font-size: 48px;
+  color: #800303;
+  margin: 0;
+}
+
+.overview-summary {
+  font-size: 25px;
+  margin: 0;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.product-info h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.product-info p {
+  margin: 5px 0;
+  color: #4b5563;
+}
+
+.quantity-selector {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #f3f4f6;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.quantity-selector button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity-selector span {
+  font-size: 18px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.add-cart-btn {
+  margin-top: 10px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-cart-btn:hover {
+  background-color: #ea580c;
+}
+
+.cart-summary-btn {
+  align-self: center;
+  background: #3b82f6;
+  margin-top: 30px;
+}
+
+/* Carousel Styles */
+.farm-photos-section {
+  max-width: 700px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+#carousel-caption {
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #444;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 2rem;
+  padding: 5px 12px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.dots {
+  margin-top: 12px;
+}
+
+.dots span {
+  cursor: pointer;
+  font-size: 22px;
+  margin: 0 6px;
+  color: #bbb;
+  transition: color 0.3s;
+}
+
+.dots span.active {
+  color: #2e7d32;
+}
+
+/* Footer */
+footer {
+  background-color: #1e293b;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+
+footer p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+iframe {
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
+
+/* Modal */
+#cartModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  color: black;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #16a34a;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content ul li {
+  margin-bottom: 10px;
+}
+
+.close-btn, .place-order-btn {
+  background-color: #22c55e;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  margin-top: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.place-order-btn {
+  background-color: #2563eb;
+}
